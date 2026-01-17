@@ -3,50 +3,46 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>O nas</title>
+<title>Informacje</title>
 <style>
-/* Ustawienie tła na całej stronie */
 body, html {
     margin: 0;
     padding: 0;
     height: 100%;
     font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
 }
 
-/* Zdjęcie Andrzeja Dudy jako tło */
-body {
-    background: url('https://upload.wikimedia.org/wikipedia/commons/3/34/Andrzej_Duda_2017.jpg') no-repeat center center fixed;
-    background-size: cover;
-    color: white;
-    text-shadow: 2px 2px 5px black;
-}
-
-/* Nagłówek i opis w centrum strony */
-.main-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
+/* Centralna zakładka/okienko */
+.info-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 30px;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
     text-align: center;
 }
 
-.main-content h1 {
-    font-size: 60px;
-    margin-bottom: 20px;
+.info-box h1 {
+    margin-top: 0;
+    font-size: 36px;
 }
 
-.main-content p {
-    font-size: 24px;
-    max-width: 800px;
+.info-box p {
+    font-size: 18px;
 }
 </style>
 </head>
 <body>
 
-<div class="main-content">
-    <h1>O nas</h1>
-    <p>Witaj na naszej stronie! Tutaj znajdziesz informacje o nas i czym się zajmujemy. Tworzymy nowoczesne rozwiązania internetowe i projekty dla każdego!</p>
+<div class="info-box">
+    <h1>Informacje</h1>
+    <p>Witaj na naszej stronie! Tutaj znajdziesz najważniejsze informacje o nas i naszych usługach. Dzięki tej zakładce możesz szybko zapoznać się z tym, czym się zajmujemy.</p>
 </div>
 
 </body>
