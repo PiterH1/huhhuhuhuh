@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lekka nakładka z Lobby</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #ecf0f1;
+}
+
+/* Przycisk otwierający nakładkę */
+#openOverlayBtn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 10px 15px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#openOverlayBtn:hover {
+    background-color: #2980b9;
+}
+
+/* Nakładka modalna - ukryta domyślnie */
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    display: none; /* ukryta na start */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Okienko nakładki */
+.modal {
+    background: white;
+    width: 90%;
+    max-width: 600px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    overflow
