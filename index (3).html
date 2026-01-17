@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Strona z dostępem po zalogowaniu</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f0f0f0;
+}
+
+/* Panel logowania */
+#loginContainer {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    text-align: center;
+}
+
+#loginContainer input {
+    display: block;
+    margin: 10px auto;
+    padding: 8px;
+    width: 200px;
+}
+
+#loginContainer button {
+    padding: 8px 15px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+/* Ukryta zawartość strony */
+#mainContent {
+    display: none; /* ukryte dopóki użytkownik się nie zaloguje */
+    text-align: center;
+    margin-top: 100px;
+}
+
+#mainContent h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+#mainContent p {
+    font-size: 24px;
+}
+</style>
+</head>
+<body>
+
+<!-- Panel logowania / rejestracji -->
+<div id="loginContainer">
+    <h2>Zaloguj się lub załóż konto</h2>
+    <input type="text" id="username" placeholder="Nazwa użytkownika">
+    <input type="password" id="password" placeholder="Hasło">
+    <button id="loginBtn">Zaloguj</button>
+    <button id="registerBtn">Załóż konto</button>
+</div>
+
+<!-- Główna zawartość strony -->
+<div id="mainContent">
+    <h1>O nas</h1>
+    <p>Witaj na naszej stronie! Tutaj znajdziesz informacje o nas i czym się zajmujemy.</p>
+</div>
+
+<script>
+// Prosta baza kont w localStorage
+let users = JSON.parse(localStorage.getItem('users') || '{}');
+
+// Funkcja logowania
+document.getElementById('loginBtn').addEventListener('click', () => {
+    const username = document.getElementById('username').value.trim();
+    const password = document.getElementById('password').value.trim();
+    if(users[username] && users[username] === password) {
+        alert('Zalogowano!');
+        document.getElementById('loginContainer').style.display = 'none';
+        document.getElementById('mainContent').style.display = 'block';
+    } else {
+        alert('Nieprawidłowa nazwa użytkownika lub hasło!');
+    }
+});
+
+// Funkcja rejestracji
+document.getElementById('registerBtn').addEventListener('click', () => {
+    const username = document.getElementById('username').value.trim();
+    const password = document.getElementById('password').value.trim();
+    if(username && password) {
+        if(users[username]) {
+            alert('Użytkownik już istnieje!');
+        } else {
+            users[username] = password;
+            localStorage.setItem('users', JSON.stringify(users));
+            alert('Konto utworzone! Teraz możesz się zalogować.');
+        }
+    } else {
+        alert('Wpisz nazwę użytkownika i hasło!');
+    }
+});
+</script>
+
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Strona zabezpieczona logowaniem</title>
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f0f0f0;
+}
+
+/* Panel logowania */
+#loginContainer {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    text-align: center;
+}
+
+#loginContainer input {
+    display: block;
+    margin: 10px auto;
+    padding: 8px;
+    width: 200px;
+}
+
+#loginContainer button {
+    padding: 8px 15px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+/* Ukryta zawartość strony */
+#mainContent {
+    display: none; /* ukryte dopóki użytkownik się nie zaloguje */
+    text-align: center;
+    margin-top: 100px;
+}
+
+#mainContent h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+#mainContent p {
+    font-size: 24px;
+}
+</style>
+</head>
+<body>
+
+<!-- Panel logowania -->
+<div id="loginContainer">
+    <h2>Zaloguj się lub załóż konto</h2>
+    <input type="text" id="username" placeholder="Nazwa użytkownika">
+    <input type="password" id="password" placeholder="Hasło">
+    <button id="loginBtn">Zaloguj</button>
+    <button id="registerBtn">Załóż konto</button>
+</div>
+
+<!-- Główna zawartość strony -->
+<div id="mainContent">
+    <h1>O nas</h1>
+    <p>Tutaj znajdziesz informacje o nas i czym się zajmujemy.</p>
+</div>
+
+<script>
+// Baza kont w localStorage
+let users = JSON.parse(localStorage.getItem('users') || '{}');
+
+// Logowanie
+document.getElementById('loginBtn').addEventListener('click', () => {
+    const username = document.getElementById('username').value.trim();
+    const password = document.getElementById('password').value.trim();
+    if(users[username] && users[username] === password) {
+        document.getElementById('loginContainer').style.display = 'none';
+        document.getElementById('mainContent').style.display = 'block';
+    } else {
+        alert('Nieprawidłowa nazwa użytkownika lub hasło!');
+    }
+});
+
+// Rejestracja
+document.getElementById('registerBtn').addEventListener('click', () => {
+    const username = document.getElementById('username').value.trim();
+    const password = document.getElementById('password').value.trim();
+    if(username && password) {
+        if(users[username]) {
+            alert('Użytkownik już istnieje!');
+        } else {
+            users[username] = password;
+            localStorage.setItem('users', JSON.stringify(users));
+            alert('Konto utworzone! Teraz możesz się zalogować.');
+        }
+    } else {
+        alert('Wpisz nazwę użytkownika i hasło!');
+    }
+});
+</script>
+
+</body>
+</html>
+
