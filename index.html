@@ -3,25 +3,49 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Strona z zakładkami</title>
+<title>Nakładka z zakładkami</title>
 <style>
-body, html {
-    margin: 0;
-    padding: 0;
+body {
     font-family: Arial, sans-serif;
-    height: 100%;
-    background-color: #ecf0f1;
+    margin: 0;
+    background: #ecf0f1;
 }
 
-/* Nakładka w centrum */
-.overlay {
+/* Przycisk otwierający nakładkę */
+#openOverlayBtn {
     position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 20px;
+    right: 20px;
+    padding: 10px 15px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#openOverlayBtn:hover {
+    background-color: #2980b9;
+}
+
+/* Nakładka modalna - ukryta domyślnie */
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    display: none; /* ukryta na start */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Okienko nakładki */
+.modal {
+    background: white;
     width: 90%;
     max-width: 600px;
-    background-color: white;
     border-radius: 12px;
     box-shadow: 0 0 20px rgba(0,0,0,0.5);
     overflow: hidden;
@@ -30,38 +54,5 @@ body, html {
 /* Pasek zakładek */
 .tab-header {
     display: flex;
-    background-color: #3498db;
-}
-
-.tab-header div {
-    flex: 1;
-    padding: 15px;
-    text-align: center;
-    cursor: pointer;
-    color: white;
-    font-weight: bold;
-    transition: background-color 0.3s;
-}
-
-.tab-header .active {
-    background-color: #2980b9;
-}
-
-/* Zawartość zakładki */
-.tab-content {
-    padding: 20px;
-    display: none;
-}
-
-.tab-content.active {
-    display: block;
-}
-</style>
-</head>
-<body>
-
-<div class="overlay">
-    <!-- Pasek zakładek -->
-    <div class="tab-header">
-        <div class="tab-link active" data-tab="home">Strona główna</div
+    backgr
 
